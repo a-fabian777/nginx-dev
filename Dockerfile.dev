@@ -1,0 +1,15 @@
+# FROM nginx:latest
+FROM nginx:1.31.8
+
+WORKDIR /etc/nginx
+
+COPY ./nginx.conf ./nginx.conf
+
+RUN mkdir ./sites-enabled
+
+COPY ./sites-available ./sites-available
+
+EXPOSE 80
+EXPOSE 443
+
+CMD ["nginx", "-g", "daemon off;"]
